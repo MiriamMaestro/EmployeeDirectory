@@ -10,24 +10,24 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     
-    <title>Hello, world!</title>
+    <title>Directory!</title>
     <script src="https://use.fontawesome.com/b01e76666d.js"></script>
 
   </head>
   <body>
-    <nav class="navbar navbar-light  text-white">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">Employee Directory</a>
 
-          <button class="btn btn-secondary btn-lg " type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" id="btn-filter">
-            Filter  <i class="far fa-caret-square-down fa-lg"></i>
-          </button>
-          <form class="d-flex input-group w-auto" id="search-bar">
-            <input type="search" class="form-control" placeholder="Type query" aria-label="Search" id="myInput" />
-          </form>
-        </div>
-    </nav>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Employee Directory</a>
+        <form class="d-flex input-group w-auto">
+          <input type="search" class="form-control" placeholder="Type query" aria-label="Search" id="myInput" />
 
+        </form>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
+          Filter
+        </button>
+      </div>
+  </nav>
       <div class="collapse" id="collapseFilter">
         <form action="" id="filter">
         <div class="card card-body">
@@ -317,11 +317,11 @@
             <!-- Section: CTA -->
             <section class="">
             <!--  <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal" data-target="#addEmployeeModal"><i class="material-icons"></i> <span>Add New User</span></a>-->
-            <button type="button" class="btn btn-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#addEmployeeModal"><i class="fas fa-user-plus"></i> <span>Add new user</span></button>    
-            <button type="button" class="btn btn-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#employeeModal" id="employeeModal-btn">
+            <button type="button" class="btn btn-secondary btn-lg btn-footer" data-bs-toggle="modal" data-bs-target="#addEmployeeModal"><i class="fas fa-user-plus"></i>      <span>Add user</span></button>    
+            <button type="button" class="btn btn-secondary btn-lg btn-footer" data-bs-toggle="modal" data-bs-target="#employeeModal" id="employeeModal-btn">
               <i class="fas fa-info-circle"></i><span> Information</span></i>
               </button>
-            <a href="index.html" class="btn btn-secondary btn-lg" tabindex="-1" role="button" aria-disabled="true">
+            <a href="index.html" class="btn btn-secondary btn-lg btn-footer" tabindex="-1" role="button" aria-disabled="true">
               <i class="far fa-address-book"></i><span> Directory</span></a>
             </section>
             <!-- Section: CTA -->
