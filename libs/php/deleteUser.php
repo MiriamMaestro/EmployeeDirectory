@@ -23,8 +23,6 @@ if (mysqli_connect_errno()) {
 
 }	
 
-// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
-
 $query = 'DELETE FROM personnel WHERE id = ' . $_POST['id'];
 
 $result = $conn->query($query);
