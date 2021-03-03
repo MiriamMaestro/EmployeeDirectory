@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    
+    <title>Hello, world!</title>
+    <script src="https://use.fontawesome.com/b01e76666d.js"></script>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-light  text-white">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Employee Directory</a>
+
+          <button class="btn btn-secondary btn-lg " type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter" id="btn-filter">
+            Filter  <i class="far fa-caret-square-down fa-lg"></i>
+          </button>
+          <form class="d-flex input-group w-auto" id="search-bar">
+            <input type="search" class="form-control" placeholder="Type query" aria-label="Search" id="myInput" />
+          </form>
+        </div>
+    </nav>
+
+      <div class="collapse" id="collapseFilter">
+        <form action="" id="filter">
+        <div class="card card-body">
+          Filter
+          <ul class="list-group list-group-flush">
+            Order by:
+            <div class="form-check">
+              <input class="form-check-input filterBy" type="radio" name="orderBy" id="locationBy" value="l.name">
+              <label class="form-check-label" for="locationBy">
+                Location
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input filterBy" type="radio" name="orderBy" id="departmentBy" value="d.name" checked>
+              <label class="form-check-label" for="departmentBy">
+                Department
+              </label>
+            </div>
+            <!--<button type="button" class="btn btn-primary btn-sm" id="btn-filter" aria-expanded="false">Submit</button>
+            -->
+          </ul>
+          <ul class="list-group list-group-flush">
+            Search by:
+            <li class="list-group-item">Department:
+              <select  class=" form-select" aria-label="Default select example" id="departmentSearch" name="department" class="form-control" required>
+                <option value="1">Human Resource</option>
+                <option value="2">Sales</option>
+                <option value="3">Marketing</option>
+                <option value="4">Legal</option>
+                <option value="5">Servicies</option>
+                <option value="6">Research and Development</option>
+                <option value="7">Product Management</option>
+                <option value="8">Training</option>
+                <option value="9">Support</option>
+                <option value="10">Engineering</option>
+                <option value="11">Accounting</option>
+                <option value="12">Business Development</option>
+              </select>
+            </li>
+            <li class="list-group-item">Location
+              <select  class=" form-select" aria-label="Default select example" id="locationSearch" name="location" class="form-control" required>
+                <option value="1">London</option>
+                <option value="2">New York</option>
+                <option value="3">Paris</option>
+                <option value="4">Munich</option>
+                <option value="5">Rome</option>
+              </select>
+            </li>
+          </ul>
+        </div>
+      </form>
+      </div>
+      
+      <div class="table-responsive">
+      <table class="table table-striped table-hover table-condensed" id="directory-table" style="border-collapse:collapse;">
+       <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col" class="mobile" id="location-header">Location</th>
+          <th scope="col" class='mobile' id="department-header">Department</th>
+          <th scope="col" class='mobile'>Email</th>
+          <th scope="col"></th>
+          
+        </tr>
+      </thead>
+      <tbody id="directory-tbody">
+
+      </tbody>
+      </table>
+    </div>
+ 
+<!-- Modal -->
+      <!-- Add Employee -->
+      <div id="addEmployeeModal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form id="user_form">
+              <div class="modal-header">						
+                <h4 class="modal-title">Add User</h4>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">×</button>
+              </div>
+              <div class="modal-body">					
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" id="lname" name="lname" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label>Department</label>
+                  <select class=" form-select" aria-label="Default select example" id="department" name="department" class="form-control" required>
+                  <option selected>Choose Department</option>
+                  <option value="1">Human Resource</option>
+                  <option value="2">Sales</option>
+                  <option value="3">Marketing</option>
+                  <option value="4">Legal</option>
+                  <option value="5">Servicies</option>
+                  <option value="6">Research and Development</option>
+                  <option value="7">Product Management</option>
+                  <option value="8">Training</option>
+                  <option value="9">Support</option>
+                  <option value="10">Engineering</option>
+                  <option value="11">Accounting</option>
+                  <option value="12">Business Development</option>
+                  </select>
+                  </div>
+                <div class="form-group">
+                  <label>E-mail</label>
+                  <input type="email" id="email" name="email" class="form-control" required>
+                </div>							
+              </div>
+              <div class="modal-footer">
+                  <input type="hidden" value="1" name="type">
+                <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
+                <button type="button" class="btn btn-success" id="btn-add"  data-bs-dismiss="modal">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+<!-- Update Employee -->
+<div id="UpdateEmployeeModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="user_form">
+        <div class="modal-header">						
+          <h4 class="modal-title">Update User</h4>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+        <div class="modal-body">					
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="updateName" name="name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="updateLastName" name="lname" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Department</label>
+            <select class=" form-select" aria-label="Default select example" id="updateDepartment" name="department" class="form-control" required>
+            <option selected>Choose Department</option>
+            <option value="1">Human Resource</option>
+            <option value="2">Sales</option>
+            <option value="3">Marketing</option>
+            <option value="4">Legal</option>
+            <option value="5">Servicies</option>
+            <option value="6">Research and Development</option>
+            <option value="7">Product Management</option>
+            <option value="8">Training</option>
+            <option value="9">Support</option>
+            <option value="10">Engineering</option>
+            <option value="11">Accounting</option>
+            <option value="12">Business Development</option>
+            </select>
+            </div>
+          <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" id="UpdateEmail" name="email" class="form-control" required>
+          </div>							
+        </div>
+        <div class="modal-footer">
+            <input type="hidden" value="1" name="type">
+          <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
+          <button type="button" class="btn btn-success" id="btn-update"  data-bs-dismiss="modal">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--Information Employee -->
+<div id="InfoEmployeeModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="user_form">
+        <div class="modal-header">						
+          <h4 class="modal-title">Information User</h4>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+        <div class="modal-body">					
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="infoName" name="name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="infoLastName" name="lname" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Department</label>
+            <input type="text" id="infoDepartment" name="department" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" id="infoEmail" name="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" id="infoLocation" name="location" class="form-control" required>
+          </div>							
+        </div>
+ 
+        <div class="modal-footer">
+            <input type="hidden" value="1" name="type">
+          <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancel">
+        
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Check delete-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure that want to delete it? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="acceptDelete"  data-bs-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Information Employee -->
+<div class="modal fade " id="employeeModal" tabindex="-1" aria-labelledby="employeeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="employeeModalLabel">Information of your Employee</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="container">
+        <div class="row">
+        <div class="col-sm">
+        <h6>Number total of employee for department:</h6>
+        <ul>
+          <li><p id="D1">Human Resource: </p></li>
+          <li><p id="D2">Sales: </p></li>
+          <li><p id="D3">Marketing: </p></li>
+          <li><p id="D4">Legal: </p></li>
+          <li><p id="D5">Servicies: </p></li>
+          <li><p id="D6">Research and Development: </p></li>
+          <li><p id="D7">Product Management: </p></li>
+          <li><p id="D8">Training: </p></li>
+          <li><p id="D9">Support: </p></li>
+          <li><p id="D10">Engineering: </p></li>
+          <li><p id="D11">Accounting: </p></li>
+          <li> <p id="D12">Business Development: </p></li>
+          
+        </ul>
+      </div>
+      <div class="col-sm">
+        <h6>Number total of employee for location:</h6>
+        <ul>
+          <li><p id="L1">London: </p></li>
+          <li><p id="L2">New York: </p></li>
+          <li><p id="L3">Paris: </p></li>
+          <li><p id="L4">Munich: </p></li>
+          <li><p id="L5">Rome: </p></li>
+        </ul>
+      </div>
+      </div>
+    </div>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+      <section class="">
+        <!-- Footer -->
+        <footer class="text-center text-white" style="background-color: #009490;">
+          <!-- Grid container -->
+          <div class="container p-4 pb-0">
+            <!-- Section: CTA -->
+            <section class="">
+            <!--  <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal" data-target="#addEmployeeModal"><i class="material-icons"></i> <span>Add New User</span></a>-->
+            <button type="button" class="btn btn-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#addEmployeeModal"><i class="fas fa-user-plus"></i> <span>Add new user</span></button>    
+            <button type="button" class="btn btn-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#employeeModal" id="employeeModal-btn">
+              <i class="fas fa-info-circle"></i><span> Information</span></i>
+              </button>
+            <a href="index.html" class="btn btn-secondary btn-lg" tabindex="-1" role="button" aria-disabled="true">
+              <i class="far fa-address-book"></i><span> Directory</span></a>
+            </section>
+            <!-- Section: CTA -->
+          </div>
+          <!-- Grid container -->
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: #009490;">
+  
+      </div>
+      <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+      </section>
+    <!-- Optional JavaScript; choose one of the two! -->
+    <div id='preloader'></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <script src="js/directory.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/add.js"></script>
+    <script src="js/delete.js"></script>
+    <script src="js/update.js"></script>
+    <script src="js/filter.js"></script>
+  </body>
+</html>
