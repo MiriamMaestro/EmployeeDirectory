@@ -101,3 +101,43 @@ $('#departmentSearch').on('change',()=>{
       }
     });
 });
+$('#filter-btn').on('click', ()=>{
+    $.ajax({
+        url: "libs/php/getAllDepartments.php",
+        type: 'POST',
+           error: function (err) {
+  
+              alert("Error: " + err.responseText.toString())
+  
+          },
+          success: function (result) {
+            for(let i = 0; i < result['data'].length ; i++){
+                let department = result['data'][i]['name'];
+                var tag = document.createElement('option');
+                tag.value= result['data'][i]["id"] ;
+                tag.text = result['data'][i]["name"] ;
+                var element = document.getElementById('departmentSearch');
+                element.appendChild(tag);
+            }
+        }
+      });
+});
+$('#filter-btn').on('click', ()=>{
+    $.ajax({
+        url: "libs/php/getAllLocation.php",
+        type: 'POST',
+           error: function (err) {
+              alert("Error: " + err.responseText.toString())
+          },
+          success: function (result) {
+            //$("#locationSearch option").remove();
+            for(let i = 0; i < result['data'].length ; i++){
+                var tagla = document.createElement('option');
+                tagla.value= result['data'][i]["id"] ;
+                tagla.text = result['data'][i]["name"] ;
+                var elementla = document.getElementById('locationSearch');
+                elementla.appendChild(tagla);
+            }
+        }
+      });
+})

@@ -23,6 +23,29 @@
     }
     .topnav-right {
         float: right;
+
+      }
+
+     table { border-collapse: collapse; width: 100%; }
+   
+     #myHeader{
+         background-color: lightgray;
+     }
+     .myHeader{
+        background-color: lightgray;
+    }
+      th{
+        background-color: lightgray !important;
+      }
+      
+      .tableFixHead {
+        overflow: scroll;
+        height: 650px;
+      }
+      
+      .tableFixHead thead th {
+        position: sticky;
+        top: 0;
       }
     /*
 .navbar{
@@ -31,6 +54,13 @@
 
     
 }*/
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
 div.navbar-default > div.container {background-color:white}
 
 @-webkit-keyframes animate-preloader {

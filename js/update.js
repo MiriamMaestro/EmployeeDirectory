@@ -11,6 +11,25 @@ $(document).on("click", ".btn-edit", function(){
     $('#updateLastName').val(lname);
    // $('#updateDepartment').text(department);
     $('#UpdateEmail').val(mail);
+    $.ajax({
+        url: "libs/php/getAllDepartments.php",
+        type: 'POST',
+           error: function (err) {
+  
+              alert("Error: " + err.responseText.toString())
+  
+          },
+          success: function (result) {
+            for(let i = 0; i < result['data'].length ; i++){
+                let department = result['data'][i]['name'];
+                var tag = document.createElement('option');
+                tag.value= result['data'][i]["id"] ;
+                tag.text = result['data'][i]["name"] ;
+                var element = document.getElementById('updateDepartment');
+                element.appendChild(tag);
+            }
+        }
+      });
 });
 $('#btn-update').on('click',()=>{
     $.ajax({
@@ -57,7 +76,7 @@ $(document).on("click", ".btn-info", function(){
     mail= fila.find('td:eq(5)').text();
     $('#infoName').val(fname);
     $('#infoLastName').val(lname);
-     $('#infoDepartment').val(department);
+    $('#infoDepartment').val(department);
     $('#infoEmail').val(mail);
     $('#infoLocation').val(location1);
 });

@@ -27,3 +27,89 @@ $('#btn-add').on('click',()=>{
       });
      
 });
+$('#btn-addDepartment').on('click',()=>{
+    $.ajax({
+        url: "libs/php/insertDepartment.php",
+        type: 'POST',
+        data:{
+            department : $('#nameDepartment').val(),
+            location: $('#locationDepartment').val()
+        },
+           error: function (err) {
+  
+              alert("Error: " + err.responseText.toString())
+  
+          },
+          success: function (result) {
+  
+        }
+      });
+     
+});
+
+$('#AddEmployee').on('click', ()=>{
+    $.ajax({
+        url: "libs/php/getAllDepartments.php",
+        type: 'POST',
+           error: function (err) {
+  
+              alert("Error: " + err.responseText.toString())
+  
+          },
+          success: function (result) {
+            for(let i = 0; i < result['data'].length ; i++){
+                let department = result['data'][i]['name'];
+                var tag = document.createElement('option');
+                tag.value= result['data'][i]["id"] ;
+                tag.text = result['data'][i]["name"] ;
+                var element = document.getElementById('department');
+                element.appendChild(tag);
+            }
+        }
+      });
+     
+})
+
+$('#AddDepartment').on('click', ()=>{
+    $.ajax({
+        url: "libs/php/getAllDepartments.php",
+        type: 'POST',
+           error: function (err) {
+  
+              alert("Error: " + err.responseText.toString())
+  
+          },
+          success: function (result) {
+            $("#datalistOptions option").remove();
+          
+            for(let i = 0; i < result['data'].length ; i++){
+                var tag = document.createElement('option');
+                tag.value= result['data'][i]['name'];
+                var element = document.getElementById('datalistOptions');
+                element.appendChild(tag);
+                
+            }
+        }
+      });
+})
+$('#AddDepartment').on('click', ()=>{
+    $.ajax({
+        url: "libs/php/getAllLocation.php",
+        type: 'POST',
+           error: function (err) {
+  
+              alert("Error: " + err.responseText.toString())
+  
+          },
+          success: function (result) {
+            
+            $("#locationOptions option").remove();
+            for(let i = 0; i < result['data'].length ; i++){
+                var tagl = document.createElement('option');
+                tagl.value = result['data'][i]['name'];
+                var elementl = document.getElementById('locationOptions');
+                elementl.appendChild(tagl);
+            }
+        }
+      });
+})
