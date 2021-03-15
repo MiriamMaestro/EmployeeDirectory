@@ -1,6 +1,4 @@
 <?php
-
-
 	$executionStartTime = microtime(true);
 
 	include("config.php");
@@ -23,21 +21,48 @@
 
 		exit;
 
-	}	
-	$query= 'SELECT departmentID FROM personnel WHERE departmentID ='.$_POST['id'];
+	};
+    $location = $_POST["location"];
+    $department = $_POST["department"];
+    $id= $_POST["id"];
+	$locationD = $_POST["locationD"];
+    $query = "UPDATE department SET name ='$department' WHERE id= $id";
+
 	$result = $conn->query($query);
-	if (mysqli_num_rows($result) > 0) {
-	    echo "The department or location that you are trying to delete has still employees associeted. Please delete before all the employees, before doing this action. ";
+    	
+	if (!$result) {
+
+		$output['status']['code'] = "400";
+		$output['status']['name'] = "executed";
+		$output['status']['description'] = "query failed";	
+		$output['data'] = [];
 
 		mysqli_close($conn);
 
-		
+		echo json_encode($output); 
 
 		exit;
-	}
 
-	$query = 'DELETE FROM department WHERE id = ' . $_POST['id'];
-    //$query = 'DELETE FROM department WHERE NOT EXISTS (SELECT departmentID FROM department WHERE department.departmentID = a.id_A);
+	}
+	$query = "UPDATE location SET name ='$location' WHERE name= '$locationD'";
+
+	$result = $conn->query($query);
+    	
+	if (!$result) {
+
+		$output['status']['code'] = "400";
+		$output['status']['name'] = "executed";
+		$output['status']['description'] = "query failed";	
+		$output['data'] = [];
+
+		mysqli_close($conn);
+
+		echo json_encode($output); 
+
+		exit;
+
+	}
+	$query = 'SELECT department.id, department.name, location.name AS loca FROM department INNER JOIN location ON department.locationID = location.id WHERE department.id=' .$id;
 
 	$result = $conn->query($query);
 	
@@ -55,22 +80,11 @@
 		exit;
 
 	}
-	$sql = 'DELETE FROM location WHERE id NOT IN (SELECT d.locationID FROM department d)';
-	//$sql='DELETE FROM location WHERE NOT EXISTS (SELECT * FROM department WHERE locationID=location.id)';
-	$result = $conn->query($sql);
-	
-	if (!$result) {
+	$data = [];
 
-		$output['status']['code'] = "400";
-		$output['status']['name'] = "executed";
-		$output['status']['description'] = "query failed";	
-		$output['data'] = [];
+	while ($row = mysqli_fetch_assoc($result)) {
 
-		mysqli_close($conn);
-
-		echo json_encode($output); 
-
-		exit;
+		array_push($data, $row);
 
 	}
 
@@ -78,8 +92,7 @@
 	$output['status']['name'] = "ok";
 	$output['status']['description'] = "success";
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
-	$output['data'] = [];
-	
+	$output['data'] = $data;
 	mysqli_close($conn);
 
 	echo json_encode($output); 

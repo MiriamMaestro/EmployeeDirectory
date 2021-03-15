@@ -148,7 +148,7 @@ $('#employeeModal-btn').on('click', ()=>{
             let departmentName = result['data'][i]['name'];
             let locationName = result['data'][i]['loca'];
             let id=result['data'][i]['id'];
-            $("#department-tbody").append($("<tr><td style='display:none'>"+ id+"</td><td>"+ departmentName+"</td><td>"+locationName+"</td><td><button class='btn btn-danger btn-sm rounded-0 btn-delete' type='button' data-toggle='tooltip' data-placement='top' data-bs-toggle='modal' data-bs-target='#deleteModal1'><i class='far fa-trash-alt'></i></button> </td></tr>"));
+            $("#department-tbody").append($("<tr><td style='display:none'>" + id + "</td><td>" + departmentName + "</td><td>" + locationName +"</td><td><button class='btn btn-danger btn-sm rounded-0 btn-delete' type='button' data-toggle='tooltip' data-placement='top' data-bs-toggle='modal' data-bs-target='#deleteModal1'><i class='far fa-trash-alt'></i></button> <button class='btn btn-success btn-sm btn-edit btn-department rounded-0' type='button' data-toggle='tooltip' data-placement='top' title='Edit' data-bs-toggle='modal' data-bs-target='#UpdateDepartmentModal' id='btn-editDepartment'><i class='fa fa-edit'></i></button> </td></tr>"));
           }
         }
         })

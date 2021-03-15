@@ -62,6 +62,10 @@
   }
   
 div.navbar-default > div.container {background-color:white}
+.btn-sm{
+    width: 30px;
+    height: 30px;
+}
 
 @-webkit-keyframes animate-preloader {
     0% {
@@ -104,9 +108,20 @@ div.navbar-default > div.container {background-color:white}
     display: visible;
 }
 .btn-footer{
-    width: 100px;
-    height: 70px;
+    width: 43%;
+    height: 80px;
     font-size: 14px;
+    margin: 10px;
+}
+#department-header{
+    width: 45%;
+}
+#location-header{
+    width: auto;
+}
+#btn-address{
+    padding: 25px;
+    text-align: center!important;
 }
 }
 

@@ -111,6 +111,7 @@ $('#filter-btn').on('click', ()=>{
   
           },
           success: function (result) {
+            $("#departmentSearch option").remove();
             for(let i = 0; i < result['data'].length ; i++){
                 let department = result['data'][i]['name'];
                 var tag = document.createElement('option');
@@ -130,7 +131,7 @@ $('#filter-btn').on('click', ()=>{
               alert("Error: " + err.responseText.toString())
           },
           success: function (result) {
-            //$("#locationSearch option").remove();
+            $("#locationSearch option").remove();
             for(let i = 0; i < result['data'].length ; i++){
                 var tagla = document.createElement('option');
                 tagla.value= result['data'][i]["id"] ;

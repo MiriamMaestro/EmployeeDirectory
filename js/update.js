@@ -6,10 +6,13 @@ $(document).on("click", ".btn-edit", function(){
     lname= fila.find('td:eq(2)').text();
     //location= fila.find('td:eq(3)').text();
     //department= fila.find('td:eq(4)').text();
+    department= fila.find('td:eq(4)').text();
     mail= fila.find('td:eq(5)').text();
     $('#updateName').val(fname);
     $('#updateLastName').val(lname);
-   // $('#updateDepartment').text(department);
+    //$("#updateDepartment").val(department);
+    //$('#updateDepartment').text(department);
+    //$('#updateDepartment option:contains("'+department+'")').attr('selected', true);
     $('#UpdateEmail').val(mail);
     $.ajax({
         url: "libs/php/getAllDepartments.php",
@@ -20,6 +23,7 @@ $(document).on("click", ".btn-edit", function(){
   
           },
           success: function (result) {
+            $('#updateDepartment option').remove();
             for(let i = 0; i < result['data'].length ; i++){
                 let department = result['data'][i]['name'];
                 var tag = document.createElement('option');
@@ -28,6 +32,7 @@ $(document).on("click", ".btn-edit", function(){
                 var element = document.getElementById('updateDepartment');
                 element.appendChild(tag);
             }
+            $('#updateDepartment option:contains("'+department+'")').attr('selected', true);
         }
       });
 });
@@ -80,3 +85,42 @@ $(document).on("click", ".btn-info", function(){
     $('#infoEmail').val(mail);
     $('#infoLocation').val(location1);
 });
+let idD;
+let locationD;
+$(document).on("click", ".btn-department", function(){
+    filaD = $(this).closest("tr");
+    idD= filaD.find('td:eq(0)').text();
+    departmentD= filaD.find('td:eq(1)').text();
+    locationD= filaD.find('td:eq(2)').text();
+    $('#updateDepartmentD').val(departmentD);
+    $('#updateLocationD').val(locationD);
+});
+$('#btn-updateDepartment').on('click', ()=>{
+
+    $.ajax({
+        url: "libs/php/updateDepartment.php",
+        type: 'POST',
+        data:{
+            location : $('#updateLocationD').val(),
+            department: $('#updateDepartmentD').val(),
+            id: idD,
+            locationD: locationD
+        },
+           error: function (err) {
+  
+              alert("Error: " + err.responseText.toString())
+  
+          },
+          success: function (result) {
+            var tableRow1 = $("td").filter(function() {
+                return $(this).text() == idD;
+            }).closest("tr");
+            tableRow1.remove();
+            let id = result['data'][0]['id'];
+            let departmentName= result['data'][0]['name'];
+            let locationName = result['data'][0]['loca'];
+            $("#department-tbody").append($("<tr><td style='display:none'>" + id + "</td><td>" + departmentName + "</td><td>" + locationName +"</td><td><button class='btn btn-danger btn-sm rounded-0 btn-delete' type='button' data-toggle='tooltip' data-placement='top' data-bs-toggle='modal' data-bs-target='#deleteModal1'><i class='far fa-trash-alt'></i></button> <button class='btn btn-success btn-sm btn-edit btn-department rounded-0' type='button' data-toggle='tooltip' data-placement='top' title='Edit' data-bs-toggle='modal' data-bs-target='#UpdateDepartmentModal' id='btn-editDepartment'><i class='fa fa-edit'></i></button> </td></tr>"));
+
+        }
+      });
+})
