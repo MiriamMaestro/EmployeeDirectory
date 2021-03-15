@@ -41,7 +41,8 @@ $('#btn-addDepartment').on('click',()=>{
   
           },
           success: function (result) {
-  
+
+         
         }
       });
      
