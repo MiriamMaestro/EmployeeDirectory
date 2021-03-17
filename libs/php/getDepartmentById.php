@@ -26,10 +26,8 @@
 		exit;
 
 	}	
-
-	//$query = 'SELECT id, name, locationID FROM department';
-	$query = 'SELECT department.id, department.name, location.name AS loca FROM department INNER JOIN location ON location.id = department.locationID';
-
+	$query = 'SELECT p.lastName, p.firstName, p.jobTitle, p.email, p.id, d.name as department, l.name as location FROM personnel p LEFT JOIN department d ON (d.id = p.departmentID) LEFT JOIN location l ON (l.id = d.locationID) WHERE d.id = '.$_POST['id'];
+   // $query = 'SELECT department.id, department.name, location.name AS loca FROM department INNER JOIN location ON department.locationID = location.id WHERE department.locationID=' .$_POST['id'];
 	$result = $conn->query($query);
 	
 	if (!$result) {

@@ -1,8 +1,4 @@
 <?php
-
-	// remove next two lines for production
-	
-
 	$executionStartTime = microtime(true);
 
 	include("config.php");
@@ -25,10 +21,31 @@
 
 		exit;
 
-	}	
+	};
+    $location = $_POST["location"];
+    $department = $_POST["department"];
+    $id= $_POST["id"];
+	$locationD = $_POST["locationD"];
+    $query = "UPDATE department SET name ='$department', locationID ='$location' WHERE id= $id";
 
-	//$query = 'SELECT id, name, locationID FROM department';
-	$query = 'SELECT department.id, department.name, location.name AS loca FROM department INNER JOIN location ON location.id = department.locationID';
+	$result = $conn->query($query);
+    	
+	if (!$result) {
+
+		$output['status']['code'] = "400";
+		$output['status']['name'] = "executed";
+		$output['status']['description'] = "query failed";	
+		$output['data'] = [];
+
+		mysqli_close($conn);
+
+		echo json_encode($output); 
+
+		exit;
+
+	}
+	
+	$query = 'SELECT department.id, department.name, location.name AS loca FROM department INNER JOIN location ON department.locationID = location.id WHERE department.id=' .$id;
 
 	$result = $conn->query($query);
 	
@@ -46,8 +63,7 @@
 		exit;
 
 	}
-   
-   	$data = [];
+	$data = [];
 
 	while ($row = mysqli_fetch_assoc($result)) {
 
@@ -60,7 +76,6 @@
 	$output['status']['description'] = "success";
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
 	$output['data'] = $data;
-	
 	mysqli_close($conn);
 
 	echo json_encode($output); 

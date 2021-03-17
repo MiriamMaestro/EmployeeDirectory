@@ -1,7 +1,5 @@
 <?php
 
-	// remove next two lines for production
-	
 
 	$executionStartTime = microtime(true);
 
@@ -26,9 +24,20 @@
 		exit;
 
 	}	
+	$query= 'SELECT departmentID FROM personnel WHERE departmentID ='.$_POST['id'];
+	$result = $conn->query($query);
+	if (mysqli_num_rows($result) > 0) {
+	    echo "The department or location that you are trying to delete has still employees associeted. Please delete before all the employees, before doing this action. ";
 
-	//$query = 'SELECT id, name, locationID FROM department';
-	$query = 'SELECT department.id, department.name, location.name AS loca FROM department INNER JOIN location ON location.id = department.locationID';
+		mysqli_close($conn);
+
+		
+
+		exit;
+	}
+
+	$query = 'DELETE FROM department WHERE id = ' . $_POST['id'];
+    //$query = 'DELETE FROM department WHERE NOT EXISTS (SELECT departmentID FROM department WHERE department.departmentID = a.id_A);
 
 	$result = $conn->query($query);
 	
@@ -46,12 +55,22 @@
 		exit;
 
 	}
-   
-   	$data = [];
+	$sql = 'DELETE FROM location WHERE id NOT IN (SELECT d.locationID FROM department d)';
+	//$sql='DELETE FROM location WHERE NOT EXISTS (SELECT * FROM department WHERE locationID=location.id)';
+	$result = $conn->query($sql);
+	
+	if (!$result) {
 
-	while ($row = mysqli_fetch_assoc($result)) {
+		$output['status']['code'] = "400";
+		$output['status']['name'] = "executed";
+		$output['status']['description'] = "query failed";	
+		$output['data'] = [];
 
-		array_push($data, $row);
+		mysqli_close($conn);
+
+		echo json_encode($output); 
+
+		exit;
 
 	}
 
@@ -59,7 +78,7 @@
 	$output['status']['name'] = "ok";
 	$output['status']['description'] = "success";
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
-	$output['data'] = $data;
+	$output['data'] = [];
 	
 	mysqli_close($conn);
 

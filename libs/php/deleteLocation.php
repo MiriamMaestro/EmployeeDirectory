@@ -1,7 +1,6 @@
 <?php
 
-	// remove next two lines for production
-	
+
 
 	$executionStartTime = microtime(true);
 
@@ -27,8 +26,9 @@
 
 	}	
 
-	//$query = 'SELECT id, name, locationID FROM department';
-	$query = 'SELECT department.id, department.name, location.name AS loca FROM department INNER JOIN location ON location.id = department.locationID';
+	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
+
+	$query = 'DELETE FROM location WHERE id = ' . $_POST['id'];
 
 	$result = $conn->query($query);
 	
@@ -46,20 +46,12 @@
 		exit;
 
 	}
-   
-   	$data = [];
-
-	while ($row = mysqli_fetch_assoc($result)) {
-
-		array_push($data, $row);
-
-	}
 
 	$output['status']['code'] = "200";
 	$output['status']['name'] = "ok";
 	$output['status']['description'] = "success";
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
-	$output['data'] = $data;
+	$output['data'] = [];
 	
 	mysqli_close($conn);
 

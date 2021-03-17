@@ -26,9 +26,47 @@
 		exit;
 
 	}	
+	$location=$_POST['location'];
+	$sql = "SELECT name FROM location WHERE name='$location'";
+    
+    $result = $conn->query($sql);
+	//$total = $result->num_rows;
 
-	//$query = 'SELECT id, name, locationID FROM department';
-	$query = 'SELECT department.id, department.name, location.name AS loca FROM department INNER JOIN location ON location.id = department.locationID';
+    
+	if (mysqli_num_rows($result)>0) {
+
+		echo "I´S THE SAME ENTRY";
+
+	} else{
+		$sql = "INSERT INTO location (name) VALUES('$location')";
+    
+    $result = $conn->query($sql);
+}
+
+
+
+/*
+    $location=$_POST['location'];
+	$sql = "INSERT INTO location (name) VALUES('$location')";
+    
+    $result = $conn->query($sql);
+    
+	if (!$result) {
+
+		$output['status']['code'] = "400";
+		$output['status']['name'] = "executed";
+		$output['status']['description'] = "query failed";	
+		$output['data'] = [];
+
+		mysqli_close($conn);
+
+		echo json_encode($output); 
+
+		exit;
+
+	}
+*/
+	$query = 'SELECT name, id FROM location ORDER BY id DESC LIMIT 1';
 
 	$result = $conn->query($query);
 	
