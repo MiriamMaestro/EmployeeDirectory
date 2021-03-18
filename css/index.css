@@ -40,7 +40,7 @@
       
       .tableFixHead {
         overflow: scroll;
-        height: 650px;
+        height: 550px;
       }
       
       .tableFixHead thead th {
@@ -111,7 +111,7 @@ div.navbar-default > div.container {background-color:white}
     width: 43%;
     height: 80px;
     font-size: 14px;
-    margin: 10px;
+    
 }
 #department-header{
     width: 45%;
@@ -123,12 +123,29 @@ div.navbar-default > div.container {background-color:white}
     padding: 25px;
     text-align: center!important;
 }
+.deskDevice{
+    display: none;
+}
+.btn-xs{
+
+    height: auto;
+    font-size: 11px;
+    margin: 2px;
+}
 }
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) { 
     .mobile{
         display: visible;
+    }
+    .mobileDevice{
+        display: none;
+    }
+    .btn-footer{
+        margin: 10px;
+        font-size: 17px;
+        
     }
  }
 

@@ -501,32 +501,56 @@
     </div>
   </div>
 </div>
-<section class="">
+<!--FOOTET-->
+<section class="deskDevice">
         <!-- Footer -->
-<footer class="text-center text-white" style="background-color: #009490;">
+<footer class="text-center text-white fixed-bottom" style="background-color: #009490;">
         <!-- Grid container -->
-  <div class="container p-4 pb-0">
+  <div class="container p-3">
           <!-- Section: CTA -->
     <section class="">
           <!--  <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal" data-target="#addEmployeeModal"><i class="material-icons"></i> <span>Add New User</span></a>-->
-      <button type="button" class="btn btn-secondary btn-lg btn-footer" data-bs-toggle="modal" data-bs-target="#addEmployeeModal" id="AddEmployee"><i class="fas fa-user-plus"></i>      <span>Add employee</span></button>    
-      <button type="button" class="btn btn-secondary btn-lg btn-footer" data-bs-toggle="modal" data-bs-target="#addDepartmentModal" id="AddDepartment"><i class="fas fa-user-plus"></i>      <span>Add department</span></button>
-      <button type="button" class="btn btn-secondary btn-lg btn-footer" data-bs-toggle="modal" data-bs-target="#addLocationModal" id="AddLocation"><i class="fas fa-user-plus"></i>      <span>Add location</span></button>
-      <button type="button" class="btn btn-secondary btn-lg btn-footer" data-bs-toggle="modal" data-bs-target="#employeeModal" id="employeeModal-btn">
+      <button type="button" class="btn btn-secondary btn-md btn-footer" data-bs-toggle="modal" data-bs-target="#addEmployeeModal" id="AddEmployee"><i class="fas fa-user-plus"></i>      <span>Add employee</span></button>    
+      <button type="button" class="btn btn-secondary btn-md btn-footer" data-bs-toggle="modal" data-bs-target="#addDepartmentModal" id="AddDepartment"><i class="fas fa-user-plus"></i>      <span>Add department</span></button>   
+      <button type="button" class="btn btn-secondary btn-md btn-footer" data-bs-toggle="modal" data-bs-target="#addLocationModal" id="AddLocation"><i class="fas fa-user-plus"></i>      <span>Add location</span></button>
+      <button type="button" class="btn btn-secondary btn-md btn-footer" data-bs-toggle="modal" data-bs-target="#employeeModal" id="employeeModal-btn">
       <i class="fas fa-info-circle"></i>  <span> Information</span></i>
       </button>
-      <a href="index.html" class="btn btn-secondary btn-lg btn-footer" tabindex="-1" role="button" aria-disabled="true" id="btn-address"><i class="far fa-address-book"></i>  <span> Directory</span></a>
-    </section>
+      <a href="#home-tab" class="btn btn-secondary btn-md btn-footer" tabindex="-1" role="button" aria-disabled="true" id="btn-address"><i class="far fa-address-book"></i>  <span> Directory</span></a> </section>
           <!-- Section: CTA -->
   </div>
         <!-- Grid container -->
-  <!-- Copyright -->
+  <!-- Copyright 
   <div class="text-center p-3" style="background-color: #009490;">
 
-  </div>
+  </div>-->
     <!-- Copyright -->
 </footer>
         <!-- Footer -->
+</section>
+<section class="mobileDevice">
+  <!-- Footer -->
+<footer class="text-center text-white fixed-bottom" style="background-color: #009490;">
+  <!-- Grid container -->
+<div class="container p-3">
+    <!-- Section: CTA -->
+<section class="">
+    <!--  <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal" data-target="#addEmployeeModal"><i class="material-icons"></i> <span>Add New User</span></a>-->
+<button type="button" class="btn btn-secondary btn-xs btn-footer" data-bs-toggle="modal" data-bs-target="#addEmployeeModal" id="AddEmployee"><i class="fas fa-user-plus"></i>      <span>Employee</span></button>    
+<button type="button" class="btn btn-secondary btn-xs btn-footer" data-bs-toggle="modal" data-bs-target="#addDepartmentModal" id="AddDepartment"><i class="fas fa-user-plus"></i>      <span>Department</span></button>   
+<button type="button" class="btn btn-secondary btn-xs btn-footer" data-bs-toggle="modal" data-bs-target="#addLocationModal" id="AddLocation"><i class="fas fa-user-plus"></i>      <span>Location</span></button>
+<button type="button" class="btn btn-secondary btn-xs btn-footer" data-bs-toggle="modal" data-bs-target="#employeeModal" id="employeeModal-btn">
+<i class="fas fa-info-circle"></i>  <span> Information</span></i>
+</button>
+
+  <!-- Grid container -->
+<!-- Copyright 
+<div class="text-center p-3" style="background-color: #009490;">
+
+</div>-->
+<!-- Copyright -->
+</footer>
+  <!-- Footer -->
 </section>
 <!--Pop up dependency-->
 <!--Button not display Location-->
@@ -556,12 +580,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        This element is a dependency of other. If you delete this data others value will losse. Are you sure you want to delete?
+        This element is a dependency of other. If you delete this data others value will losse. It´s not allowed to delete this value. Try to delete those what depends on it.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" id="acceptDeleteLocationDependecy"  data-bs-dismiss="modal">Yes, I'm sure</button>
-      </div>
+      <!--  <button type="button" class="btn btn-primary" id="acceptDeleteLocationDependecy"  data-bs-dismiss="modal">Yes, I'm sure</button>
+     --> </div>
     </div>
   </div>
 </div>
@@ -574,12 +598,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        This element is a dependency of other. If you delete this data others value will losse. Are you sure you want to delete?
+        This element is a dependency of other. If you delete this data others value will losse. It´s not allowed to delete this value. Try to delete those what depends on it.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" id="acceptDeleteDepartmentDependecy"  data-bs-dismiss="modal">Yes, I'm sure</button>
-      </div>
+      <!--  <button type="button" class="btn btn-primary" id="acceptDeleteDepartmentDependecy"  data-bs-dismiss="modal">Yes, I'm sure</button>
+      --></div>
     </div>
   </div>
 </div>
