@@ -80,13 +80,14 @@
   </div>
 </form>
 </div>
-
+<div id="wrap">
+<div id="main">
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Employee</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Department and location</button>
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Department</button>
   </li>
   <li class="nav-item" role="presentation">
     <button class="nav-link" id="location-tab" data-bs-toggle="tab" data-bs-target="#locationTable" type="button" role="tab" aria-controls="location" aria-selected="false">Location</button>
@@ -96,7 +97,7 @@
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
     <div class="table-responsive tableFixHead d-flex justify-content-evenly">
       <table class="table table-striped table-hover table-condensed responsive-table table-sticky" id="directory-table" style="border-collapse:collapse;">
-        <thead class="header data-sticky-header" id="myHeader">
+        <thead class="header data-sticky-header myHeader" id="myHeader">
         <tr class="header">
           <th scope="col" class="header">Name</th>
           <th scope="col" class="header">Last Name</th>
@@ -144,7 +145,8 @@
     </div>
   </div>
 </div>
-
+</div>
+</div>
 <!-- Modal -->
  <!-- Add Employee -->
 <div id="addEmployeeModal" class="modal fade">
@@ -502,9 +504,10 @@
   </div>
 </div>
 <!--FOOTET-->
+
 <section class="deskDevice">
         <!-- Footer -->
-<footer class="text-center text-white fixed-bottom" style="background-color: #009490;">
+<footer class="text-center text-white" style="background-color: #009490;">
         <!-- Grid container -->
   <div class="container p-3">
           <!-- Section: CTA -->
@@ -516,41 +519,32 @@
       <button type="button" class="btn btn-secondary btn-md btn-footer" data-bs-toggle="modal" data-bs-target="#employeeModal" id="employeeModal-btn">
       <i class="fas fa-info-circle"></i>  <span> Information</span></i>
       </button>
-      <a href="#home-tab" class="btn btn-secondary btn-md btn-footer" tabindex="-1" role="button" aria-disabled="true" id="btn-address"><i class="far fa-address-book"></i>  <span> Directory</span></a> </section>
-          <!-- Section: CTA -->
+      <a href="#home-tab" class="btn btn-secondary btn-md btn-footer" tabindex="-1" role="button" aria-disabled="true" id="btn-address"><i class="far fa-address-book"></i>  <span> Directory</span></a>
+    </section>
+    
+      <!-- Section: CTA -->
   </div>
-        <!-- Grid container -->
-  <!-- Copyright 
-  <div class="text-center p-3" style="background-color: #009490;">
-
-  </div>-->
-    <!-- Copyright -->
 </footer>
         <!-- Footer -->
 </section>
 <section class="mobileDevice">
-  <!-- Footer -->
-<footer class="text-center text-white fixed-bottom" style="background-color: #009490;">
+<!-- Footer -->
+  <footer class="text-center text-white" style="background-color: #009490;">
   <!-- Grid container -->
-<div class="container p-3">
+    <div class="container p-3">
     <!-- Section: CTA -->
-<section class="">
-    <!--  <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal" data-target="#addEmployeeModal"><i class="material-icons"></i> <span>Add New User</span></a>-->
-<button type="button" class="btn btn-secondary btn-xs btn-footer" data-bs-toggle="modal" data-bs-target="#addEmployeeModal" id="AddEmployee"><i class="fas fa-user-plus"></i>      <span>Employee</span></button>    
-<button type="button" class="btn btn-secondary btn-xs btn-footer" data-bs-toggle="modal" data-bs-target="#addDepartmentModal" id="AddDepartment"><i class="fas fa-user-plus"></i>      <span>Department</span></button>   
-<button type="button" class="btn btn-secondary btn-xs btn-footer" data-bs-toggle="modal" data-bs-target="#addLocationModal" id="AddLocation"><i class="fas fa-user-plus"></i>      <span>Location</span></button>
-<button type="button" class="btn btn-secondary btn-xs btn-footer" data-bs-toggle="modal" data-bs-target="#employeeModal" id="employeeModal-btn">
-<i class="fas fa-info-circle"></i>  <span> Information</span></i>
-</button>
-
-  <!-- Grid container -->
-<!-- Copyright 
-<div class="text-center p-3" style="background-color: #009490;">
-
-</div>-->
-<!-- Copyright -->
-</footer>
-  <!-- Footer -->
+      <section class="">
+      <!--  <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal" data-target="#addEmployeeModal"><i class="material-icons"></i> <span>Add New User</span></a>-->
+        <button type="button" class="btn btn-secondary btn-xs btn-footer" data-bs-toggle="modal" data-bs-target="#addEmployeeModal" id="AddEmployee"><i class="fas fa-user-plus"></i>      <span>Employee</span></button>    
+        <button type="button" class="btn btn-secondary btn-xs btn-footer" data-bs-toggle="modal" data-bs-target="#addDepartmentModal" id="AddDepartment"><i class="fas fa-user-plus"></i>      <span>Department</span></button>   
+        <button type="button" class="btn btn-secondary btn-xs btn-footer" data-bs-toggle="modal" data-bs-target="#addLocationModal" id="AddLocation"><i class="fas fa-user-plus"></i>      <span>Location</span></button>
+        <button type="button" class="btn btn-secondary btn-xs btn-footer" data-bs-toggle="modal" data-bs-target="#employeeModal" id="employeeModal-btn">
+        <i class="fas fa-info-circle"></i>  <span> Information</span></i>
+        </button>
+      </section>
+    </div>
+  
+  </footer>
 </section>
 <!--Pop up dependency-->
 <!--Button not display Location-->
