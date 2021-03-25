@@ -157,10 +157,10 @@ $(document).on("click", ".btn-department", function(){
 $('#btn-updateDepartment').on('click', ()=>{
 
     $.ajax({
-        url: "libs/php/updateLocation.php",
+        url: "libs/php/updateDepartment.php",
         type: 'POST',
         data:{
-            location : $('#updateLocationDepartment').val(),
+            location : $('#updateLocationDepartment option:selected').text(),
             department: $('#updateDepartmentDrop').val(),
             id: idD,
             locationD: locationD,
@@ -221,7 +221,7 @@ $(document).on("click", "#btnEditLocation", function(){
 //UPDATE LOCATION
 $('#btn-updateLocation').on('click', ()=>{
     $.ajax({
-        url: "libs/php/updateLocation.php",
+        url: "libs/php/updateDepartmentLocation.php",
         type: 'POST',
         data:{
             name : $("#locationDepartmentUpdate").val(),

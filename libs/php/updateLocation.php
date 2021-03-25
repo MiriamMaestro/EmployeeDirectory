@@ -26,7 +26,7 @@
     $department = $_POST["department"];
     $id= $_POST["id"];
 	$locationD = $_POST["locationD"];
-    $query = "UPDATE department SET name ='$department', locationID ='$location' WHERE id= $id";
+    $query = "UPDATE location SET name ='$department', locationID ='$location' WHERE id= $id";
 
 	$result = $conn->query($query);
     	

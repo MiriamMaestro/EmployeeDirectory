@@ -47,18 +47,22 @@ body{
 
 #main {
     padding-bottom: 0;  /* must be same height as the footer */
-}
-
-
-
-    
-#myTabContent{
-    height: calc(100% – 90px) !important;
+    height: calc(100vh - 56px)!important;
     width: 100%;
     height: 83%;
-    height: -moz-calc(100% - 90px);
-    height: -webkit-calc(100% - 90px);
+    height: -moz-calc(100vh - 56px);
+    height: -webkit-calc(100vh - 56px);
 }
+
+/*
+    
+#myTabContent{
+    height: calc(100vh - 90px)!important;
+    width: 100%;
+    height: 83%;
+    height: -moz-calc(100vh - 90px);
+    height: -webkit-calc(100vh - 90px);
+}*/
     footer {
         width: 100%;
         position: relative;
@@ -204,6 +208,10 @@ div.navbar-default > div.container {background-color:white}
         font-size: 17px;
         
     }
+    
+    #myTabContent{
+    margin-bottom: 20px;
+        }
  }
 
 /* Large devices (desktops, 992px and up)
