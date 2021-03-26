@@ -45,14 +45,6 @@ body{
     min-height: 100%;
 }
 
-#main {
-    padding-bottom: 0;  /* must be same height as the footer */
-    height: calc(100vh - 56px)!important;
-    width: 100%;
-    height: 83%;
-    height: -moz-calc(100vh - 56px);
-    height: -webkit-calc(100vh - 56px);
-}
 
 /*
     
@@ -187,12 +179,22 @@ div.navbar-default > div.container {background-color:white}
     font-size: 11px;
     margin: 2px;
 }
-
+/*
 .tableFixHead {
     overflow: scroll;
-    height: calc(100% – 90px) !important;
-    height: 300px;
-  }
+  }*/
+  #main {
+    padding-bottom: 0;  /* must be same height as the footer */
+    height: calc(100vh - 70px)!important;
+    width: 100%;
+    height: 83%;
+    height: -moz-calc(100vh - 70px);
+    height: -webkit-calc(100vh - 70px);
+}
+#myTabContent{
+    margin-bottom: 10px;
+        }
+
 }
 
 /* Medium devices (tablets, 768px and up)*/
@@ -212,6 +214,15 @@ div.navbar-default > div.container {background-color:white}
     #myTabContent{
     margin-bottom: 20px;
         }
+        #main {
+            padding-bottom: 0;  /* must be same height as the footer */
+            height: calc(100vh - 56px)!important;
+            width: 100%;
+            height: 83%;
+            height: -moz-calc(100vh - 56px);
+            height: -webkit-calc(100vh - 56px);
+        }
+        
  }
 
 /* Large devices (desktops, 992px and up)
